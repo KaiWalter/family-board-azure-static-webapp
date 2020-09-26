@@ -22,7 +22,8 @@
 
         <div class="main">
             <div class="calendar">
-                <p>Loading content from the API: <b id="name">...</b></p>
+                <p>status: <b id="status">...</b></p>
+                <p>claim: <b id="claim">...</b></p>
             </div>
             <div class="message">
             </div>
@@ -32,8 +33,9 @@
 
     <script>
         (async function() {
-          let { status } = await( await fetch(`/api/health`)).json();
-          document.querySelector('#name').textContent = status;
+          let { status, claim } = await( await fetch(`/api/health`)).json();
+          document.querySelector('#status').textContent = status;
+          document.querySelector('#claim').textContent = claim;
         }())
       </script>
 
