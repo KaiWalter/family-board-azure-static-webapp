@@ -19,9 +19,12 @@ namespace api
         {
             log.LogInformation("Health request.");
 
+            var claim = StaticWebAppsAuth.Parse(req);
+
             var responseMessage = new
             {
-                Status = "Healthy."
+                Status = "Healthy.",
+                Claim = claim?.Identity?.Name ?? "none",
             };
 
             return new OkObjectResult(responseMessage);
