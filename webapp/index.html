@@ -22,12 +22,20 @@
 
         <div class="main">
             <div class="calendar">
+                <p>Loading content from the API: <b id="name">...</b></p>
             </div>
             <div class="message">
             </div>
         </div>
 
     </div>
+
+    <script>
+        (async function() {
+          let { status } = await( await fetch(`/api/health`)).json();
+          document.querySelector('#name').textContent = status;
+        }())
+      </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
