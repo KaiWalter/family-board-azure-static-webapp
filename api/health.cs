@@ -16,7 +16,7 @@ namespace api
         [FunctionName("health")]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            [Blob("familyboard/configuration.json", FileAccess.Write)] out string configuration,
+            [Blob("familyboard/configuration.json", FileAccess.Write, Connection="FamilyBoardStorage")] out string configuration,
             ILogger log)
         {
             log.LogInformation("Health request.");
